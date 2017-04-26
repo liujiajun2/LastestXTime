@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_a1cc6e849b623ce55c37180ac5d7430dd3361c17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_6159e0b9f479bceb99df49f8d8b0170ce445d65f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_247dc03a378721b230fb0f8d63677367feadfdae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_5212740c50fd01712f90d95a9bee0321c72edd23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_72fc2b9525c7cbc32b15bf65279e34835c450af7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_d6ee05ee634cc614a187ab84f4a514e2648549ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_64c163bf57b38acc7fc74115290c5b0c0ab2f6c4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\qing\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_028961ba2a2de8b1c69f750539999ce8e51d47c0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_fd202e1dbbc863f8f35a477709dd5cf7d5927a85.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_bf5aa828940fc1af5985e29b51b7863053d9cc83.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6848bffeccb9df900501f7382429b99b3ca283a">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_3a7a04a0a27330c75cac8177d6d92cfeca7269e9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_4305539de1a3ba3f4ebf5d396500bc172e8bae30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_9b144be56b0f1989feab4cccb4e0494a60ffcb6a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_0637c6c38826d1ddc02183db690a987019cb8cb4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_9418efd749b59a9d6380843a0ecc76b92c2e097b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4effeed42717ab839a5a7bd08b08c4dee032eb5a">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\instant-run_cb30d82eba22ec648a10a595c2ddb88114a0131e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\AndoridWork\XTime\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="E:\AndoridWork\XTime\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_05a500ead593e971f414281d48ee92cb53715122.jar" />
+    </item>
+
+</items>

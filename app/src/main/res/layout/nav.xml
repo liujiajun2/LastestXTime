@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_height="50dp"
+    android:background="@color/header_bg">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="@color/xian_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:background="@color/di_bg"
+        android:id="@+id/nav1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_bg"
+            android:drawablePadding="2dp"
+            android:drawableTop="@drawable/nav_home"
+            android:gravity="center"
+            android:textColor="@drawable/nav_home_text"
+            android:text="@string/nav_first"
+            android:textSize="9dp"
+            android:id="@+id/nav_home"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_bg"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/nav_task"
+            android:gravity="center"
+            android:textSize="9dp"
+            android:textColor="@drawable/nav_task_text"
+            android:text="@string/nav_second"
+            android:id="@+id/nav_task"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_bg"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/nav_myself"
+            android:gravity="center"
+            android:textSize="9dp"
+            android:textColor="@drawable/nav_myself_text"
+            android:text="@string/nav_third"
+            android:id="@+id/nav_myself"
+            />
+    </LinearLayout>
+</RelativeLayout>

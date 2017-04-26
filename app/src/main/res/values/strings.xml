@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">定时分享器</string>
+    <string name="nav_first">首页</string>
+    <string name="nav_second">任务</string>
+    <string name="nav_third">我的</string>
+    <string name="task_name">添加任务</string>
+    <string name="sendmessage_name">定时发送信息</string>
+    <string name="anlayzemessage_name">分析短信</string>
+    <string name="sendgps_name">定时GPS</string>
+    <string name="back_registername">注册</string>
+    <string name="back_login">登录</string>
+    <string name="back_set">设置</string>
+    <string name="back_theme_color">主题颜色</string>
+    <string name="back_about">关于与帮助</string>
+    <string name="back_function">功能与介绍</string>
+    <string name="back_tickling">反馈</string>
+</resources>

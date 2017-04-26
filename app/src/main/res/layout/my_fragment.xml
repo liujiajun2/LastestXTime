@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        >
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@mipmap/login"
+        android:id="@+id/icon_login"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+       />
+
+    <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="登录"
+         android:layout_centerVertical="true"
+        android:textSize="15dp"
+        android:layout_toRightOf="@+id/icon_login"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/text_login"
+        />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/right"
+            android:id="@+id/icon_right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/xian_gray"
+        android:layout_alignParentBottom="true">
+
+    </View>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/setting"
+            android:id="@+id/icon_setting"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:layout_centerVertical="true"
+            android:textSize="15dp"
+            android:layout_toRightOf="@+id/icon_setting"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/text_setting"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/xian_gray"
+            android:layout_alignParentBottom="true">
+
+        </View>
+
+    </RelativeLayout>
+    <!--<EditText-->
+       <!--android:layout_width="match_parent"-->
+       <!--android:layout_height="43dp"-->
+       <!--android:inputType="textPersonName"-->
+       <!--android:ems="10"-->
+       <!--android:id="@+id/username"-->
+       <!--android:hint="用户名"-->
+       <!--android:layout_marginLeft="60dp"-->
+       <!--android:layout_marginRight="60dp"-->
+       <!--android:drawableRight="@mipmap/down_more"-->
+       <!--android:layout_above="@+id/password"-->
+       <!--android:layout_alignParentLeft="true"-->
+       <!--android:layout_alignParentStart="true" />-->
+
+   <!--<EditText-->
+       <!--android:layout_width="match_parent"-->
+       <!--android:layout_height="43dp"-->
+       <!--android:inputType="textPassword"-->
+       <!--android:ems="10"-->
+       <!--android:id="@+id/password"-->
+       <!--android:hint="密码"-->
+       <!--android:layout_marginLeft="60dp"-->
+       <!--android:layout_marginRight="60dp"-->
+       <!--android:layout_centerVertical="true" />-->
+
+   <!--<ImageView-->
+       <!--android:layout_width="132dp"-->
+       <!--android:layout_height="132dp"-->
+       <!--android:layout_gravity="center"-->
+       <!--android:src="@mipmap/apppicture"-->
+       <!--android:layout_marginTop="33dp"-->
+       <!--android:layout_alignParentTop="true"-->
+       <!--android:layout_centerHorizontal="true" />-->
+
+   <!--<Button-->
+       <!--android:id="@+id/login_btnLogin"-->
+       <!--android:layout_width="match_parent"-->
+       <!--android:layout_height="35dp"-->
+       <!--android:background="@mipmap/button_bg"-->
+       <!--android:text="登陆"-->
+       <!--android:layout_gravity="center"-->
+       <!--android:textColor="#FFFFFF"-->
+       <!--android:textSize="19sp"-->
+       <!--android:layout_marginTop="27dp"-->
+       <!--android:layout_marginLeft="60dp"-->
+       <!--android:layout_marginRight="60dp"-->
+       <!--android:layout_below="@+id/password" />-->
+
+   <!--<TextView-->
+       <!--android:id="@+id/login_forgetpassword"-->
+       <!--android:layout_width="100dp"-->
+       <!--android:layout_weight="1"-->
+       <!--android:gravity="right"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--android:layout_marginBottom="22dp"-->
+       <!--android:layout_marginRight="26dp"-->
+       <!--android:text="忘记密码"-->
+       <!--android:textColor="@color/text_blue"-->
+       <!--android:textSize="13sp"-->
+       <!--android:layout_marginEnd="26dp"-->
+       <!--android:layout_alignParentBottom="true"-->
+       <!--android:layout_alignParentRight="true"-->
+       <!--android:layout_alignParentEnd="true" />-->
+
+   <!--<TextView-->
+       <!--android:id="@+id/login_newuser"-->
+       <!--android:layout_width="100dp"-->
+       <!--android:layout_weight="1"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--android:text="新用户"-->
+       <!--android:textColor="@color/text_blue"-->
+       <!--android:layout_marginBottom="22dp"-->
+       <!--android:textSize="13sp"-->
+       <!--android:layout_alignBaseline="@+id/login_forgetpassword"-->
+       <!--android:layout_alignBottom="@+id/login_forgetpassword"-->
+       <!--android:layout_alignParentLeft="true"-->
+       <!--android:layout_alignParentStart="true"-->
+       <!--android:layout_marginLeft="26dp"-->
+       <!--android:layout_marginStart="39dp" />-->
+</RelativeLayout>
+
+

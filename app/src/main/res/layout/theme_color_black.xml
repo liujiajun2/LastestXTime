@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/back_theme_color"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        >
+
+        <ImageView
+            android:id="@+id/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/hei" />
+        <Button
+            android:id="@+id/theme_color_btn_black"
+            android:layout_margin="10dp"
+            android:layout_below="@id/black"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:background="@mipmap/button_bg"
+            android:text="设定"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

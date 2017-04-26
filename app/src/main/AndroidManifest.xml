@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jmu.xtime"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk
+        android:maxSdkVersion="18"
+        android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".functionservers.XTFunctionsGlobal.XTFunctionsGlobalData"
+        android:allowBackup="true"
+        android:backupInForeground="true"
+        android:icon="@mipmap/logo"
+        android:label="定时分享器"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="主页面" />
+        <activity
+            android:name=".functionservers.XTFunctionsList.Controller.XTFunctionsListController"
+            android:label="服务" />
+        <activity
+            android:name=".functionservers.XTSendSMS.Controller.XTSendSMSController"
+            android:label="定时发送短息" />
+        <activity
+            android:name=".functionservers.XTAnalyzeMessage.Controller.XTFunctionsAnalyzeMessageController"
+            android:label="短信分析" />
+        <activity
+            android:name=".functionservers.XTSendGPS.Controller.XTSendGPSController"
+            android:label="定时发送GPS" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="登录页面" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="注册页面" />
+        <activity
+            android:name=".functionservers.XTFuctionTakePicture.XTFunction_Take_Picture"
+            android:launchMode="singleInstance" />
+
+        <receiver
+            android:name=".functionservers.XTFunctionsList.Extension.Receiver.XTFunctionsBroadcastReceiver"
+            android:process=":remote">
+            <intent-filter>
+                //添加我们自定义的广播到动作中
+                <action android:name="openQQ" />
+                <action android:name="alarm" />
+                <action android:name="openMusic" />
+                <action android:name="timingProgram" />
+                <action android:name="sendSMS" />
+                <action android:name="sendGPS" />
+            </intent-filter>
+        </receiver>
+        <!-- <receiver android:name="com.jmu.xtime.functionservers.XTFunctionsList.Extension.Receiver.XTFunctionsGetSMSBroadcastReceiver" android:process=":remote"> -->
+        <!-- <intent-filter android:priority="1000"> -->
+        <!-- <action android:name="android.provider.Telephony.SMS_RECEIVED"/> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".SetColorActivity" />
+        <activity android:name=".SetAboutActivity"></activity>
+    </application>
+
+</manifest> <!-- android:theme="@android:style/Theme.NoTitleBar"> --><!-- " -->

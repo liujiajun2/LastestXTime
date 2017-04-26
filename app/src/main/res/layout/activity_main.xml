@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/header"></include>
+    <!--显示内容   开始-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"
+        android:layout_above="@+id/nav"
+        android:background="@color/transparent"
+        android:id="@+id/fragment_container"
+        >
+    </FrameLayout>
+    <!--显示内容   结束-->
+
+    <!--引入底部 开始-->
+    <include layout="@layout/nav"></include>
+    <!--引入底部  结束-->
+
+</RelativeLayout>

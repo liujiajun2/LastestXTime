@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textColor" format="color"></attr>
+    <attr name="backgroudColor" format="color"></attr>
+    <attr name="back_pictrue" format="reference"></attr>
+    <attr name="add_task_pictrue" format="reference"></attr>
+    <attr name="first_page_pictrue" format="reference"></attr>
+    <attr name="tasks_pictrue" format="reference"></attr>
+    <attr name="my_home" format="reference"></attr>
+</resources>
