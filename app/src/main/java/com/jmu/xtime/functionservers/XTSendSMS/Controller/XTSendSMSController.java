@@ -67,9 +67,10 @@ public class XTSendSMSController extends AppCompatActivity {
 
     private void sendSMS(String phoneNo, String message) {
         Map<String,String> extraString = new HashMap<String,String>();
-        extraString.put("targetNumberPhone",targetPhoneNum.getText().toString());
-        extraString.put("targetSMSContext",targetSMSContext.getText().toString());
-        XTFunctionsTools.showDialog(XTSendSMSController.this, "发送短信","sendSMS",extraString);
+        extraString.put("tel",targetPhoneNum.getText().toString());
+        extraString.put("content",targetSMSContext.getText().toString());
+        XTFunctionsTools.showDialog(this,XTSendSMSController.this, "发送短信","sendSMS",extraString);
+
     }
     private TextWatcher textChange = new TextWatcher() {
         @Override

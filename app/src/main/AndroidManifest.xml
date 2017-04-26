@@ -25,6 +25,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -35,8 +36,7 @@
         android:icon="@mipmap/logo"
         android:label="定时分享器"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,9 +44,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".MainActivity"
             android:label="主页面" />
+        <activity android:name=".TaskDetail"
+            android:label="任务详情" />
         <activity
             android:name=".functionservers.XTFunctionsList.Controller.XTFunctionsListController"
             android:label="服务" />
@@ -62,8 +63,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="登录页面" />
-        <activity
-            android:name=".RegisterActivity"
+        <activity android:name=".RegisterActivity"
             android:label="注册页面" />
         <activity
             android:name=".functionservers.XTFuctionTakePicture.XTFunction_Take_Picture"
@@ -88,9 +88,7 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
         />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".SetColorActivity" />
-        <activity android:name=".SetAboutActivity"></activity>
+
     </application>
 
 </manifest> <!-- android:theme="@android:style/Theme.NoTitleBar"> --><!-- " -->

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.view.View;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,9 +15,9 @@ import android.widget.Toast;
 
 import com.jmu.xtime.MainActivity;
 import com.jmu.xtime.R;
+import com.jmu.xtime.functionservers.XTAnalyzeMessage.Controller.XTFunctionsAnalyzeMessageController;
 import com.jmu.xtime.functionservers.XTFuctionTakePicture.XTFunction_Take_Picture;
 import com.jmu.xtime.functionservers.XTFunctionsList.Model.XTFunctionModel;
-import com.jmu.xtime.functionservers.XTAnalyzeMessage.Controller.XTFunctionsAnalyzeMessageController;
 import com.jmu.xtime.functionservers.XTSendGPS.Controller.XTSendGPSController;
 import com.jmu.xtime.functionservers.XTSendSMS.Controller.XTSendSMSController;
 import com.jmu.xtime.update.Task.XTakePicture;
@@ -53,8 +53,6 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
-        switchTheme(taskInfomationManager.getTheme());
         setContentView(R.layout.xt_functions_list_layout);
         intent = getIntent();
         if(intent!=null) {
@@ -110,19 +108,19 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
         // MARK: 功能二：短信分析功能
         XTFunctionModel functionModel2 = new XTFunctionModel();
         functionModel2.setFunctionName("分析短信");
-        functionModel2.setFunctionIcon(ContextCompat.getDrawable(getBaseContext(),R.drawable.xf_functions_analyze_message));
+        functionModel2.setFunctionIcon(ContextCompat.getDrawable(getBaseContext(), R.drawable.xf_functions_analyze_message));
         functionModel2.setFunctionContext(XTFunctionsAnalyzeMessageController.class);
         functionsListArray.add(1,functionModel2);
 
         XTFunctionModel functionModel3 = new XTFunctionModel();
         functionModel3.setFunctionName("定时GPS");
-        functionModel3.setFunctionIcon(ContextCompat.getDrawable(getBaseContext(),R.drawable.xt_functinos_gps));
+        functionModel3.setFunctionIcon(ContextCompat.getDrawable(getBaseContext(), R.drawable.xt_functinos_gps));
         functionModel3.setFunctionContext(XTSendGPSController.class);
         functionsListArray.add(functionModel3);
 
         XTFunctionModel functionModel4 = new XTFunctionModel();
         functionModel4.setFunctionName("定时摄像");
-        functionModel4.setFunctionIcon(ContextCompat.getDrawable(getBaseContext(),R.drawable.timg1));
+        functionModel4.setFunctionIcon(ContextCompat.getDrawable(getBaseContext(), R.drawable.timg1));
 //        functionModel4.setFunctionContext(XTFuction_GetLockTimeActivity.class);
         functionsListArray.add(functionModel4);
     }
@@ -212,7 +210,6 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
 //                Long id =  taskInfomationManager.addTask(this.getId(),map);
                 ClockThread clockThread = new ClockThread();
  //               System.out.println("lalallalalala");
-                System.out.println("time33333333");
                    id =  taskInfomationManager.addTask(clockThread.getId(),map);
                 System.out.println("TimePickerDialog id---->"+id);
  //               System.out.println("lalallalalala");
@@ -239,7 +236,7 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
     }
 
     public HashMap<String,String> initConnectToDB( final Context context){
-//        taskInfomationManager = new TaskInfomationManager(context);
+        taskInfomationManager = new TaskInfomationManager(context);
         HashMap<String,String > map  = new HashMap<String,String>();
         return map;
     }
@@ -248,9 +245,9 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
         public void run() {
             try {
                 Thread.sleep(numberTime);
- //               System.out.println("ClockThread---->"+id);
+                System.out.println("ClockThread---->"+id);
                 Intent intent2 = new Intent();
-   //             System.out.println(intent2.toString());
+                System.out.println(intent2.toString());
                 intent2.putExtra("taskId",id+"");
                 intent2.setClass(XTFunctionsListController.this,XTFunction_Take_Picture.class);
                 startActivity(intent2);
@@ -267,7 +264,7 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
         Iterator iterator = map2.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
-            Object key = entry.getKey();//这个就是taskId.
+            Object key = entry.getKey();
             Object val = entry.getValue();
             System.out.println(((Integer) key+" "));
             Map<String,String> map1 = (HashMap<String,String>)val;
@@ -282,7 +279,6 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
     }
 
     public  void  insertTaskIntoSqlLite(HashMap<String,String > map,final int hourOfDay, final int minute){
-        System.out.println("time22222");
         map.put(XTakePicture.TITLE,"定时摄像");
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("将于"+hourOfDay+"点"+minute+"分开启摄像头并完成自动拍摄");
@@ -293,22 +289,5 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
         stringBuilder = new StringBuilder();
         stringBuilder.append("on");
         map.put(XTakePicture.TASK_STATUS,stringBuilder.toString());
-    }
-
-    public void switchTheme(int id) {
-        switch (id) {
-            case 1:
-                setTheme(R.style.AppTheme);
-                return;
-            case 2:
-                setTheme(R.style.coolBlack);
-                return;
-            case 3:
-                setTheme(R.style.nightBlue);
-                return;
-            case 4:
-                setTheme(R.style.sakuraPink);
-                return;
-        }
     }
 }

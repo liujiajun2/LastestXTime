@@ -2,7 +2,6 @@ package com.jmu.xtime.update.TaskManager;
 
 import android.content.Context;
 
-import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -55,8 +54,7 @@ public class TaskInfomationManager {
 
     //添加正在运行的任务到Map中同时也会添加到数据库中去,返回taskId
     public Long addTask(Long threadId,HashMap<String,String> taskMap){
-        System.out.print(new Date());
-        Long id =  dbTool.insertTask(taskMap);
+         Long id =  dbTool.insertTask(taskMap);
         databaseMap.put(id,taskMap);
         map.put(threadId,taskMap);
         return id;
@@ -71,29 +69,8 @@ public class TaskInfomationManager {
         databaseMap.put(taskId,taskMap);
         return dbTool.updateTask(taskId,taskMap);
     }
-    //创建用户 成功返回 > 1
-    public long createUser(String userName,String password){
-        return  dbTool.createUser(userName,password);
-    }
-
-    //用户名是否存在
-    public boolean isUserNameExists(String userName){
-        return dbTool.isUserNameExist(userName);
-    }
-
-    //登录 成功返回真 失败返回假
-    public  boolean login(String  userName,String password){
-        return  dbTool.login(userName,password);
-    }
 
     public HashMap<Integer,String> getTasksStringData(){
         return dbTool.getTasksData();
-    }
-    public int getTheme(){
-        return  dbTool.getTheme();
-    }
-
-    public boolean updateTheme(int tid){
-        return  dbTool.updateTheme(tid);
     }
 }

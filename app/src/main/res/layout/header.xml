@@ -3,10 +3,9 @@
     android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="?attr/backgroudColor">
-    <!--android:background="@color/header_bg"-->
+    android:background="@color/header_bg"
 
-    <!--&gt;-->
+    >
     <TextView
         android:layout_height="25dp"
         android:layout_weight="1"
@@ -22,12 +21,11 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="18sp"
-        android:textColor="?attr/textColor"
+        android:textColor="@color/header_text"
         android:text="@string/app_name"
         android:id="@+id/text_top"
         android:layout_toRightOf="@+id/introduce"
         android:layout_toLeftOf="@+id/add_task" />
-    <!--android:textColor="@color/header_text"-->
 
     <View
         android:layout_width="match_parent"
@@ -39,12 +37,11 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_weight="1"
-        android:background="?attr/add_task_pictrue"
+        android:background="@mipmap/add"
         android:id="@+id/add_task"
         android:textSize="20sp"
         android:layout_marginRight="12dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-    <!--android:background="@mipmap/add"-->
 </RelativeLayout>

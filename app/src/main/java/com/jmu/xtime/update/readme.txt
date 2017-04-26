@@ -11,6 +11,8 @@ content              类型 String 内容
 time                 类型 String 发送时间
 taskStatus           类型 String on/off
 
+
+
 分析短信
 键   ->              值
 taskId             类型 String 在数据库中的ID

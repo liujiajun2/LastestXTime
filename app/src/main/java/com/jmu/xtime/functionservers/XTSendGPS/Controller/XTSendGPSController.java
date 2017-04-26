@@ -96,9 +96,9 @@ public class XTSendGPSController extends AppCompatActivity {
 
     private void sendGPS() {
         Map<String,String> extraString = new HashMap<String,String>();
-        extraString.put("receiveGPSPhone",receiveGPSPhoneEdit.getText().toString());
-        extraString.put("sendGPSInterval",sendGPSInterval.getText().toString());
-        extraString.put("sendGPSCount",sendGPSCount.getText().toString());
-        XTFunctionsTools.showDialog(XTSendGPSController.this, "发送GPS","sendGPS",extraString);
+        extraString.put("tel",receiveGPSPhoneEdit.getText().toString());
+        extraString.put("sendTimeInterval",sendGPSInterval.getText().toString());
+        extraString.put("sendTimes",sendGPSCount.getText().toString());
+        XTFunctionsTools.showDialog(this,XTSendGPSController.this, "发送GPS","sendGPS",extraString);
     }
 }

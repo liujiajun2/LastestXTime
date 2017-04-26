@@ -1,44 +1,10 @@
 
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="textColor">@color/header_text</item>
-        <item name="backgroudColor">@color/header_bg</item>
-        <item name="back_pictrue">@mipmap/back</item>
-        <item name="add_task_pictrue">@mipmap/add</item>
-        <item name="my_home">@mipmap/nav_home_on</item>
-        <item name="first_page_pictrue">@mipmap/nav_task_on</item>
-        <item name="tasks_pictrue">@mipmap/nav_myself_on</item>
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="coolBlack" >
-        <item name="textColor">#ffcc00</item>
-        <item name="backgroudColor">#333333</item>
-        <item name="back_pictrue">@mipmap/back_cool_black</item>
-        <item name="add_task_pictrue">@mipmap/add_task_coolblack</item>
-        <item name="my_home">@mipmap/nav_home_on_black</item>
-        <item name="first_page_pictrue">@mipmap/nav_task_on_black</item>
-        <item name="tasks_pictrue">@mipmap/nav_myself_on_black</item>
-    </style>
-    <style name="nightBlue" >
-        <item name="textColor">#0066cc</item>
-        <item name="backgroudColor">#000066</item>
-        <item name="back_pictrue">@mipmap/back_innerblue</item>
-        <item name="add_task_pictrue">@mipmap/add_task_innerblue</item>
-        <item name="my_home">@mipmap/nav_home_off_blue</item>
-        <item name="first_page_pictrue">@mipmap/nav_task_off_blue</item>
-        <item name="tasks_pictrue">@mipmap/nav_myself_off_blue</item>
-    </style>
-    <style name="sakuraPink" >
-        <item name="textColor">#ff3366</item>
-        <item name="backgroudColor">#ffffff</item>
-        <item name="back_pictrue">@mipmap/back_sakura_pink</item>
-        <item name="add_task_pictrue">@mipmap/add_task_pink</item>
-        <item name="my_home">@mipmap/nav_home_on_pink</item>
-        <item name="first_page_pictrue">@mipmap/nav_task_on_pink</item>
-        <item name="tasks_pictrue">@mipmap/nav_myself_on_pink</item>
-    </style>
-
 </resources>

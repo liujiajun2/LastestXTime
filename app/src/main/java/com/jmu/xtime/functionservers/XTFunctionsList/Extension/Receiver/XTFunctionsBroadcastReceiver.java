@@ -16,18 +16,23 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.jmu.xtime.functionservers.XTFunctionsGlobal.XTFunctionsGlobalData;
+import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
 
 /**
  * Created by 沈启金 on 2017/3/12.
  */
 
 public class XTFunctionsBroadcastReceiver extends BroadcastReceiver {
-
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i("MPInfo","Alarm Receiver" + intent.getAction());
         Intent anotherIntent;
         Bundle bundle = intent.getExtras();
+        //删除任务
+        long taskId = bundle.getLong("taskId");
+        TaskInfomationManager taskInfomationManager = new TaskInfomationManager(context);
+        taskInfomationManager.getTaskInformationByTaskId((int)taskId).put("taskStatus","off");
+        taskInfomationManager.deleteTask(taskId);
 
         switch (intent.getAction()) {
             case "openQQ":
@@ -66,19 +71,19 @@ public class XTFunctionsBroadcastReceiver extends BroadcastReceiver {
                 }
                 break;
             case "sendSMS":
-                String targetPhoneNumger = bundle.getString("targetNumberPhone");
-                String targetSMSContext = bundle.getString("targetSMSContext");
+                String targetPhoneNumger = bundle.getString("tel");
+                String targetSMSContext = bundle.getString("content");
                 sendSMS(context,targetPhoneNumger,targetSMSContext);
                 break;
             case "sendGPS":
                 try {
                     Log.i("MPInfo","sendGPS");
-                    String receiveGPSPhone = bundle.getString("receiveGPSPhone");
+                    String receiveGPSPhone = bundle.getString("tel");
                     int sendGPSCount = 1;
                     int sendGPSInterval = 1;
                     try {
-                        sendGPSCount = Integer.parseInt(bundle.getString("sendGPSCount"));
-                        sendGPSInterval = Integer.parseInt(bundle.getString("sendGPSInterval"));
+                        sendGPSCount = Integer.parseInt(bundle.getString("sendTimes"));
+                        sendGPSInterval = Integer.parseInt(bundle.getString("sendTimeInterval"));
                     } catch (Exception e) {
                         Log.i("MPInfo",e.getMessage());
                     }
@@ -169,9 +174,9 @@ public class XTFunctionsBroadcastReceiver extends BroadcastReceiver {
         try {
             Log.i("MPInfo","sendingSMS");
             Log.i("MPInfo",phoneNumber + message);
-            android.telephony.SmsManager sms = android.telephony.SmsManager.getDefault();
-            sms.sendTextMessage(phoneNumber,null,message,null,null);
-            //Toast.makeText(context,"信息已发送",Toast.LENGTH_LONG).show();
+            // android.telephony.SmsManager sms = android.telephony.SmsManager.getDefault();
+            // sms.sendTextMessage(phoneNumber,null,message,null,null);
+            Toast.makeText(context,"信息已发送",Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Log.i("MPInfo","SendSMS Error");
             Toast.makeText(context,"发送信息失败",Toast.LENGTH_LONG).show();

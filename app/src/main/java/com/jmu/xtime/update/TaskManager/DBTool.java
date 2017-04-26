@@ -25,25 +25,17 @@ public class DBTool {
         static final String KEY_ROWID = "_id";
         static final String KEY_TASKDATA = "taskdata";
         static final String TAG = "DBTool";
-        static final String KEY_UID ="uid";
-        static final String KEY_NAME ="name";
-        static final String KEY_PWD ="pwd";
-        static final String KEY_OID = "oid";
 
         static final String DATABASE_NAME = "db";
         static final String DATABASE_TABLE = "tasks";
         static final int DATABASE_VERSION = 1;
 
-        static final String USER_TABLE = "users";
         static final String SEPARATOR = "=[e_,+e]=";
         static final String NEXT_DATA = "{]za_ak[}";
 
         static final String DATABASE_CREATE = "CREATE TABLE tasks" +
                 "(_id integer primary key autoincrement,taskdata text not null);" ;
-        static final  String DATABASE_CREATE_USER_TABLE = "CREATE TABLE users"+
-            "(uid integer primary key autoincrement,name varchar(36) not null,pwd varchar(36) not null)";
-    static final String DATABASE_THEME="CREATE TABLE theme(id integer primary key autoincrement ,tid integer not null)";
-         static  int nowUser =  -1;
+
         static int id;
 
         final Context context;
@@ -65,9 +57,6 @@ public class DBTool {
             public void onCreate(SQLiteDatabase db) {
                 try{
                     db.execSQL(DATABASE_CREATE);
-                    db.execSQL(DATABASE_CREATE_USER_TABLE);
-                    db.execSQL(DATABASE_THEME);
-                    db.execSQL("insert into  theme(tid) values(1)");
                 }catch (SQLException e){
                     e.printStackTrace();
                 }
@@ -91,62 +80,8 @@ public class DBTool {
         public long insertTask(HashMap<String,String> map){
             ContentValues cv = new ContentValues();
             cv.put(KEY_TASKDATA,taskMapToTaskData(map));
-            cv.put(KEY_OID,nowUser);
             return db.insert(DATABASE_TABLE,null,cv);
         }
-
-    public long createUser(String userName,String pwd){
-        ContentValues  cv = new ContentValues();
-        cv.put(KEY_NAME,userName);
-        cv.put(KEY_PWD,pwd);
-        return db.insert(USER_TABLE,null,cv);
-    }
-    public  int getTheme(){
-        Cursor cursor = db.query(true,"THEME",new String[]{"tid"},"id=1",null,null,null,null,null);
-        if(cursor.moveToFirst()){
-            return  cursor.getInt(0);
-        }else{
-            return  -1;
-        }
-    }
-    public boolean updateTheme(int tid){
-        ContentValues cv = new ContentValues();
-        cv.put("tid",tid);
-        return  db.update("THEME",cv,"id=1",null) > 0;
-    }
-
-    public boolean isUserNameExist(String userName){
-        Cursor cursor = db.query(true,USER_TABLE,new String[]{KEY_UID},KEY_NAME+"=?",new String[]{userName},null,null,null,null);
-        if(cursor != null){
-            cursor.moveToFirst();
-        }else{
-            return  false;
-        }
-        Integer uid = cursor.getInt(0);
-        if(uid != null) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean login(String userName,String pwd){
-        Cursor cursor  = db.
-                query(true,USER_TABLE,new String[]{KEY_UID},KEY_NAME+"=? AND " +KEY_PWD +"=?",new String[]{userName,pwd},null,null,null,null);
-        if(cursor == null) {
-            return false;
-        }
-        if(cursor.moveToFirst()){
-        Integer uid = cursor.getInt(0);
-        if(uid != null) {
-            nowUser = uid;
-            return  true;
-        }else{
-            return  false;
-        }
-        }else{
-            return  false;
-        }
-    }
 
         public boolean deleteTask(long rowId){
             return db.delete(DATABASE_TABLE,KEY_ROWID+"="+rowId,null) > 0;
@@ -174,16 +109,14 @@ public class DBTool {
 
         public HashMap<Integer,HashMap<String,String>> getTasks(){
             Cursor cursor = db.query(DATABASE_TABLE,
-                    new String[]{KEY_ROWID,KEY_OID,KEY_TASKDATA},null,null,null,null,null);
+                    new String[]{KEY_ROWID,KEY_TASKDATA},null,null,null,null,null);
 
             HashMap<Integer,HashMap<String,String>>  tasks = new  HashMap<Integer,HashMap<String,String>>();
 
             while(cursor.moveToNext()){
-                if(cursor.getInt(1) == nowUser) {
-                    HashMap<String, String> map = taskDataToTaskMap(cursor.getString(2));
-                    map.put(BasicTaskInfomation.TASK_ID, cursor.getString(0));
-                    tasks.put(cursor.getInt(0), map);
-                }
+                HashMap<String,String> map = taskDataToTaskMap(cursor.getString(1));
+                map.put(BasicTaskInfomation.TASK_ID,cursor.getString(0));
+                tasks.put(cursor.getInt(0),map);
             }
             return tasks;
         }
@@ -191,7 +124,7 @@ public class DBTool {
     public HashMap<Integer,String> getTasksData(){
         HashMap<Integer,String> map = new HashMap<Integer, String>();
         Cursor cursor = db.query(DATABASE_TABLE,
-                new String[]{KEY_ROWID,KEY_OID,KEY_TASKDATA},null,null,null,null,null);
+                new String[]{KEY_ROWID,KEY_TASKDATA},null,null,null,null,null);
         while (cursor.moveToNext()){
             map.put(cursor.getInt(0),cursor.getString(1));
             Log.d("H:",cursor.getInt(0)+"->"+cursor.getString(1));

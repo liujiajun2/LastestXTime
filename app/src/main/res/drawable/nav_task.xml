@@ -3,7 +3,3 @@
     <item android:drawable="@mipmap/nav_task_on" android:state_selected="true"/>
     <item android:drawable="@mipmap/nav_task_off"/>
 </selector>
-
-
-<!--<item android:drawable="@mipmap/nav_task_on" android:state_selected="true"/>-->
-<!--<item android:drawable="@mipmap/nav_task_off"/>-->
