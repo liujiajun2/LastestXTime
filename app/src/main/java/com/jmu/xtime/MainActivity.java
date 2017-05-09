@@ -3,6 +3,7 @@ package com.jmu.xtime;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -35,6 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MyFragment f3;
     private AddTaskFragment f4;
     private FragmentManager transaction;
+    private TaskInfomationManager taskInfomationManager;
+    private int themeId = 1;
+    Drawable thtemeTop_Home = null;
+    Drawable thtemeTop_Task = null;
+    Drawable thtemeTop_Myself = null;
 
     //定义后事检测实例
     public static GestureDetector detector;
@@ -53,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
+        themeId  = taskInfomationManager.getTheme();
+        switchTheme(themeId);
         setContentView(R.layout.activity_main);
         bindView();
         detector = new GestureDetector(this);
@@ -63,8 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void bindView(){
         topBar=(TextView)this.findViewById(R.id.text_top);
         nav_home=(TextView)this.findViewById(R.id.nav_home);
+        nav_home.setCompoundDrawablesWithIntrinsicBounds(null, thtemeTop_Home , null, null);
         nav_task=(TextView)this.findViewById(R.id.nav_task);
+        nav_task.setCompoundDrawablesWithIntrinsicBounds(null, thtemeTop_Task , null, null);
         nav_myself=(TextView)this.findViewById(R.id.nav_myself);
+        nav_myself.setCompoundDrawablesWithIntrinsicBounds(null, thtemeTop_Myself , null, null);
         ly_content = (FrameLayout)this.findViewById(R.id.fragment_container);
         add_task = (TextView)this.findViewById(R.id.add_task);
 
@@ -262,5 +274,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onSingleTapUp(MotionEvent arg0) {
                 // TODO Auto-generated method stub
         return false;
+    }
+
+
+    public void switchTheme(int id) {
+        switch (id) {
+            case 1:
+                thtemeTop_Home = getResources().getDrawable(R.drawable.nav_home);
+                thtemeTop_Task = getResources().getDrawable(R.drawable.nav_task);
+                thtemeTop_Myself = getResources().getDrawable(R.drawable.nav_myself);
+                setTheme(R.style.AppTheme);
+                return;
+            case 2:
+                thtemeTop_Home = getResources().getDrawable(R.drawable.nav_home_coolblack);
+                thtemeTop_Task = getResources().getDrawable(R.drawable.nav_task_black);
+                thtemeTop_Myself = getResources().getDrawable(R.drawable.nav_myself_black);
+                setTheme(R.style.coolBlack);
+                return;
+            case 3:
+                thtemeTop_Home = getResources().getDrawable(R.drawable.nav_home_blue);
+                thtemeTop_Task = getResources().getDrawable(R.drawable.nav_task_blue);
+                thtemeTop_Myself = getResources().getDrawable(R.drawable.nav_myself_blue);
+                setTheme(R.style.nightBlue);
+                return;
+            case 4:
+                thtemeTop_Home = getResources().getDrawable(R.drawable.nav_home_pink);
+                thtemeTop_Task = getResources().getDrawable(R.drawable.nav_task_pink);
+                thtemeTop_Myself = getResources().getDrawable(R.drawable.nav_myself_pink);
+                setTheme(R.style.sakuraPink);
+                return;
+        }
     }
 }

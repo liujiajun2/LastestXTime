@@ -3,8 +3,7 @@
     android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/header_bg"
-
+    android:background="?attr/backgroudColor"
     >
     <TextView
         android:layout_height="15dp"
@@ -12,7 +11,7 @@
         android:layout_marginLeft="12dp"
         android:scaleType="fitStart"
         android:layout_centerVertical="true"
-        android:drawableLeft="@mipmap/back"
+        android:drawableLeft="?attr/back_pictrue"
         android:textColor="@color/header_text"
         android:textSize="12dp"
         android:id="@+id/back"
@@ -24,7 +23,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="15sp"
-        android:textColor="@color/header_text"
+        android:textColor="?attr/textColor"
         android:text="@string/task_name"
         android:layout_toLeftOf="@+id/blank"
         android:id="@+id/title_name"

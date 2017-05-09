@@ -16,6 +16,7 @@ import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
 import org.w3c.dom.Text;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -33,7 +34,7 @@ public class TaskDetail extends Activity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         taskId = bundle.getLong("taskId");
-        tid = bundle.getInt("taskId");
+        System.out.println("onCreate  taskId--->"+taskId);
         setContentView(R.layout.task_detail);
         TextView textView = (TextView)this.findViewById(R.id.back_task);
         textView.setOnClickListener(backTask);
@@ -42,6 +43,7 @@ public class TaskDetail extends Activity {
         showMyDialog();
         btn.setOnClickListener(delButton);
         showDetail();
+        showSqlLite();
     }
     View.OnClickListener backTask = new View.OnClickListener() {
         @Override
@@ -63,7 +65,12 @@ public class TaskDetail extends Activity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 taskInfomationManager.deleteTask(taskId);
-                finish();
+                taskInfomationManager.updateTaskStatus(taskId,"yes");
+                Intent intent  = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setClass(TaskDetail.this,MainActivity.class);
+                startActivity(intent);
+         //       finish();
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -77,8 +84,8 @@ public class TaskDetail extends Activity {
     private void showDetail(){
 
         taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
-
-        HashMap<String, String> hashMap = taskInfomationManager.getTaskInformationByTaskId(tid);
+        System.out.println("showDetail---->"+taskId);
+        HashMap<String, String> hashMap = taskInfomationManager.getTaskInformationByTaskId(taskId);
         if(hashMap.get("title").equals("发送短信")){
 
             TextView tel = (TextView)this.findViewById(R.id.task_detail_tel);
@@ -118,4 +125,37 @@ public class TaskDetail extends Activity {
         TextView time = (TextView)this.findViewById(R.id.task_detail_time);
         time.setText(hashMap.get("time"));
     }
+
+    public void showSqlLite(){
+//        Map<Integer,HashMap<String,String>> map2 = taskInfomationManager.getTasks();
+//        Iterator iterator = map2.entrySet().iterator();
+//        while (iterator.hasNext()){
+//            Map.Entry entry = (Map.Entry)iterator.next();
+//            Object key = entry.getKey();
+//            Object val = entry.getValue();
+//            System.out.println(("showSqlite----->"+(Integer) key));
+//            Map<String,String> map1 = (HashMap<String,String>)val;
+//            Iterator iterator1 = map1.entrySet().iterator();
+//            while (iterator1.hasNext()){
+//                Map.Entry entry1 = (Map.Entry)iterator1.next();
+//                Object object = entry1.getKey();
+//                Object val2 = entry1.getValue();
+//                System.out.println("showSqlite()----->"+object.toString()+"--->"+val2.toString());
+//            }
+//        }
+        Map<Integer,HashMap<String,String>> map2 = taskInfomationManager.getTasks();
+        for(int i = 0 ; i < 100 ; i++){
+            HashMap<String,String> data = map2.get(i);
+            if(data != null ) {
+                Iterator iterator1 = data.entrySet().iterator();
+                System.out.println("TASKID------->" + i);
+                while (iterator1.hasNext()) {
+                    Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator1.next();
+                    System.out.print(entry.getKey() + " = " + entry.getValue());
+                }
+                System.out.println("--------------------");
+            }
+        }
+    }
+
 }

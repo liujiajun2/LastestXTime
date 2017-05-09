@@ -8,8 +8,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -20,6 +25,8 @@ public class SettingActivity extends AppCompatActivity {
     private TaskInfomationManager taskInfomationManager;
     private Activity activity;
     private TextView back;
+    private String message = "退出登陆成功";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +49,26 @@ public class SettingActivity extends AppCompatActivity {
         text_setting_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                boolean flag = true;
+                Map<Integer,HashMap<String,String>> map = taskInfomationManager.getTasks();
+                if(map==null){
+                    Toast.makeText(SettingActivity.this,"当前已经无任务", Toast.LENGTH_LONG).show();
+                }else {
+                    for(int i = 0 ; i <=taskInfomationManager.getMaxTaskId() ; i++) {
+                        HashMap<String, String> map1 = map.get(i);
+                        if(map1!=null){
+                            flag = false;
+                            int id = Integer.parseInt(map1.get("taskId"));
+                            taskInfomationManager.deleteTask(id);
+                            taskInfomationManager.updateTaskStatus(id,"yes");
+                        }
+                    }
+                    if(flag) Toast.makeText(SettingActivity.this,"当前已经无任务", Toast.LENGTH_LONG).show();
+                    else{
+                        Toast.makeText(SettingActivity.this,"一键清空所有任务成功", Toast.LENGTH_LONG).show();
+                    }
+               //     Toast.makeText(SettingActivity.this,"一键清空所有任务成功", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -60,7 +86,7 @@ public class SettingActivity extends AppCompatActivity {
         set_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(SettingActivity.this,message, Toast.LENGTH_LONG).show();
             }
         });
         System.out.println("onCreate");

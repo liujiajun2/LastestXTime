@@ -87,6 +87,7 @@ public class TaskFragment extends Fragment {
                     String taskId = m.group();
                     int tid = Integer.parseInt(taskId);
                     taskInfomationManager.deleteTask((long)tid);
+                    taskInfomationManager.updateTaskStatus((long)tid,"yes");
                     //移除item
                     myDatalist.remove(position);
                     functionAdapt.notifyDataSetChanged();
@@ -112,7 +113,9 @@ public class TaskFragment extends Fragment {
            Matcher m = p.matcher(result);
            m.find();
            String taskId = m.group();
-           int tid = Integer.parseInt(taskId);
+           //int tid = Integer.parseInt(taskId);
+           Long tid = Long.parseLong(taskId);
+           System.out.println("tid---->OnItemClickListener-->"+tid);
            Intent intent = new Intent();
            intent.putExtra("taskId",tid);
            intent.setClass(getActivity(),TaskDetail.class);
@@ -126,52 +129,77 @@ public class TaskFragment extends Fragment {
         Map<Integer, HashMap<String, String>> map2 = taskInfomationManager.getTasks();
         if(map2!=null) {
             Iterator iterator = map2.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry entry = (Map.Entry) iterator.next();
-                Object key = entry.getKey();
-                Object val = entry.getValue();
-                //   System.out.println(((Integer) key + " "));
-                Map<String, String> map1 = (HashMap<String, String>) val;
-                if(map1.get("title").equals("发送短信")){
-                    int id = Integer.parseInt(map1.get("taskId"));
-                    String message = id+map1.get("title")+"     "+map1.get("time");
-                    MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.xt_functions_send_message));
-                    listItem.add(dataMessage);
+            for(int i = 0 ; i <=taskInfomationManager.getMaxTaskId() ; i++){
+                HashMap<String,String> map1 = map2.get(i);
+                if (map1 != null){
+                    if(map1.get("title").equals("发送短信")){
+                        int id = Integer.parseInt(map1.get("taskId"));
+                        String message = id+map1.get("title")+"     "+map1.get("time");
+                        MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.xt_functions_send_message));
+                        listItem.add(dataMessage);
 
 //                    listItem.set(id,dataMessage);
 
-                } else if(map1.get("title").equals("发送GPS")){
-                    int id = Integer.parseInt(map1.get("taskId"));
-                    String message = id+map1.get("title")+"     "+map1.get("time");
-                    MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.xt_functinos_gps));
-                    listItem.add(dataMessage);
-                }else if(map1.get("title").equals("定时摄像")){
-                    int id = Integer.parseInt(map1.get("taskId"));
-                    String message = id+map1.get("title")+"     "+map1.get("time");
-                    MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.timg1));
-                    listItem.add(dataMessage);
+                    } else if(map1.get("title").equals("发送GPS")){
+                        int id = Integer.parseInt(map1.get("taskId"));
+                        String message = id+map1.get("title")+"     "+map1.get("time");
+                        MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.xt_functinos_gps));
+                        listItem.add(dataMessage);
+                    }else if(map1.get("title").equals("定时摄像")){
+                        int id = Integer.parseInt(map1.get("taskId"));
+                        String message = id+map1.get("title")+"     "+map1.get("time");
+                        MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.timg1));
+                        listItem.add(dataMessage);
+                    }else{
+                    }
                 }
-//                Iterator iterator1 = map1.entrySet().iterator();
-//                System.out.println(map1.get("title"));
-//                System.out.println(map1.get("time"));
-//                ArrayList arr = new ArrayList();
-//                Set s = map1.keySet();
-//                Iterator it = s.iterator();
-//                arr.add((Integer)key);
-//                while (iterator1.hasNext()) {
-//                    Map.Entry entry1 = (Map.Entry) iterator1.next();
-//                    Object object = entry1.getKey();
-//                    Object val2 = entry1.getValue();
-//                    System.out.println(object.toString() + "--->" + val2.toString());
-//                    arr.add(val2.toString());
-//
-//                }
-
-
-//                MyselfMessageInfo dataMessage2 = new MyselfMessageInfo("发送短信",getActivity().getResources().getDrawable(R.drawable.xt_functions_send_message));
-//                listItem.add(dataMessage2);
-
             }
+//            while (iterator.hasNext()) {
+//                Map.Entry entry = (Map.Entry) iterator.next();
+//                Object key = entry.getKey();
+//                Object val = entry.getValue();
+//                //   System.out.println(((Integer) key + " "));
+//                Map<String, String> map1 = (HashMap<String, String>) val;
+//                if(map1.get("title").equals("发送短信")){
+//                    int id = Integer.parseInt(map1.get("taskId"));
+//                    String message = id+map1.get("title")+"     "+map1.get("time");
+//                    MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.xt_functions_send_message));
+//                    listItem.add(dataMessage);
+//
+////                    listItem.set(id,dataMessage);
+//
+//                } else if(map1.get("title").equals("发送GPS")){
+//                    int id = Integer.parseInt(map1.get("taskId"));
+//                    String message = id+map1.get("title")+"     "+map1.get("time");
+//                    MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.xt_functinos_gps));
+//                    listItem.add(dataMessage);
+//                }else if(map1.get("title").equals("定时摄像")){
+//                    int id = Integer.parseInt(map1.get("taskId"));
+//                    String message = id+map1.get("title")+"     "+map1.get("time");
+//                    MyselfMessageInfo dataMessage = new MyselfMessageInfo(message,getActivity().getResources().getDrawable(R.drawable.timg1));
+//                    listItem.add(dataMessage);
+//                }
+////                Iterator iterator1 = map1.entrySet().iterator();
+////                System.out.println(map1.get("title"));
+////                System.out.println(map1.get("time"));
+////                ArrayList arr = new ArrayList();
+////                Set s = map1.keySet();
+////                Iterator it = s.iterator();
+////                arr.add((Integer)key);
+////                while (iterator1.hasNext()) {
+////                    Map.Entry entry1 = (Map.Entry) iterator1.next();
+////                    Object object = entry1.getKey();
+////                    Object val2 = entry1.getValue();
+////                    System.out.println(object.toString() + "--->" + val2.toString());
+////                    arr.add(val2.toString());
+////
+////                }
+//
+//
+////                MyselfMessageInfo dataMessage2 = new MyselfMessageInfo("发送短信",getActivity().getResources().getDrawable(R.drawable.xt_functions_send_message));
+////                listItem.add(dataMessage2);
+//
+//            }
         }else{
         }
         return listItem;

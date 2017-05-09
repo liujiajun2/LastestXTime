@@ -1,11 +1,13 @@
 package com.jmu.xtime.functionservers.XTFunctionsList.Controller;
 
+import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.jmu.xtime.MainActivity;
 import com.jmu.xtime.R;
+import com.jmu.xtime.SettingActivity;
 import com.jmu.xtime.functionservers.XTAnalyzeMessage.Controller.XTFunctionsAnalyzeMessageController;
 import com.jmu.xtime.functionservers.XTFuctionTakePicture.XTFunction_Take_Picture;
 import com.jmu.xtime.functionservers.XTFunctionsList.Model.XTFunctionModel;
@@ -49,10 +52,14 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
     private TaskInfomationManager taskInfomationManager;
     private  long numberTime  ;
     private long id;
+    private Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        activity = this;
+        taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
+        switchTheme(taskInfomationManager.getTheme());
         setContentView(R.layout.xt_functions_list_layout);
         intent = getIntent();
         if(intent!=null) {
@@ -134,16 +141,16 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
 
     public void toastShowMessage(int sendHour,int sendMinute,int curHour,int curMinus){
         message = "摄像头将在";
-        if((sendHour-curHour) == 0){
+        if((sendHour-curHour) == 0&&sendMinute>curMinus){
             message += (sendMinute-curMinus)+"分钟后自动进行拍摄";
         }else if((sendHour-curHour) <= 0){
-            if((60-curMinus+sendMinute)>60){
+            if(sendMinute>=curMinus){
                 message += (23-curHour+sendHour+1) + "小时"+(sendMinute-curMinus)+"分钟后自动进行拍摄";
             }else {
                 message += (23-curHour+sendHour) + "小时"+(60-curMinus+sendMinute)+"分钟后自动进行拍摄";
             }
         }else {
-            if((sendMinute-curMinus)>0){
+            if((sendMinute-curMinus)>=0){
                 message += (sendHour-curHour) + "小时"+(sendMinute-curMinus)+"分钟后自动进行拍摄";
             }else if(sendMinute-curMinus<0){
                 message += (sendHour-1-curHour) + "小时"+(60+sendMinute-curMinus)+"分钟后自动进行拍摄";
@@ -165,7 +172,8 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
 
 
                 final  HashMap<String,String > map = initConnectToDB(context);
-                showSqlLite();
+//                showSqlLite();
+ //               testShowSqlLite();
 //                Map<Integer,HashMap<String,String>> map2 = taskInfomationManager.getTasks();
 //                Iterator iterator = map2.entrySet().iterator();
 //                while (iterator.hasNext()){
@@ -211,7 +219,9 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
                 ClockThread clockThread = new ClockThread();
  //               System.out.println("lalallalalala");
                    id =  taskInfomationManager.addTask(clockThread.getId(),map);
+                long temp = taskInfomationManager.insertTaskStatus(id);
                 System.out.println("TimePickerDialog id---->"+id);
+                System.out.println("TimePickerDialog insertTaskStatus---->"+temp);
  //               System.out.println("lalallalalala");
                 clockThread.start();
 //                new Thread(){
@@ -236,7 +246,6 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
     }
 
     public HashMap<String,String> initConnectToDB( final Context context){
-        taskInfomationManager = new TaskInfomationManager(context);
         HashMap<String,String > map  = new HashMap<String,String>();
         return map;
     }
@@ -244,10 +253,20 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
     public class ClockThread extends Thread{
         public void run() {
             try {
+                
                 Thread.sleep(numberTime);
+               // taskInfomationManager.getTasks();
+      //          System.out.println(taskInfomationManager);
+    //            System.out.println("run()------>"+id);
+  //              System.out.println(new TaskInfomationManager(activity).getTaskStatus(1));
+                if(taskInfomationManager.getTaskStatus(id).equals("yes")){
+                    taskInfomationManager.deleteTaskStatus(id);
+                    System.out.println("alallalalalalal");
+                    return;
+                }
                 System.out.println("ClockThread---->"+id);
                 Intent intent2 = new Intent();
-                System.out.println(intent2.toString());
+//                System.out.println(intent2.toString());
                 intent2.putExtra("taskId",id+"");
                 intent2.setClass(XTFunctionsListController.this,XTFunction_Take_Picture.class);
                 startActivity(intent2);
@@ -257,24 +276,49 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
         }
     }
 
-
+//    public void testShowSqlLite(){
+//        Map<Integer,HashMap<String,String>> map2 = taskInfomationManager.getTasks();
+//        for(int i = 0;i<100;i++){
+//            if(map2.get(i)!=null){
+//                Iterator iterator = map2.get(i).entrySet().iterator();
+//                while (iterator.hasNext()){
+//                    Map.Entry entry = (Map.Entry)iterator.next();
+//                    Object key = entry.getKey();
+//                    Object val = entry.getValue();
+//                    System.out.println(("testShowSqlLite()----->"+(Integer) key));
+//                }
+//            }
+//        }
+//    }
 
     public void showSqlLite(){
+//        Map<Integer,HashMap<String,String>> map2 = taskInfomationManager.getTasks();
+//        Iterator iterator = map2.entrySet().iterator();
+//        while (iterator.hasNext()){
+//            Map.Entry entry = (Map.Entry)iterator.next();
+//            Object key = entry.getKey();
+//            Object val = entry.getValue();
+//            System.out.println(("showSqlite----->"+(Integer) key));
+//            Map<String,String> map1 = (HashMap<String,String>)val;
+//            Iterator iterator1 = map1.entrySet().iterator();
+//            while (iterator1.hasNext()){
+//                Map.Entry entry1 = (Map.Entry)iterator1.next();
+//                Object object = entry1.getKey();
+//                Object val2 = entry1.getValue();
+//                System.out.println("showSqlite()----->"+object.toString()+"--->"+val2.toString());
+//            }
+//        }
         Map<Integer,HashMap<String,String>> map2 = taskInfomationManager.getTasks();
-        Iterator iterator = map2.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry entry = (Map.Entry)iterator.next();
-            Object key = entry.getKey();
-            Object val = entry.getValue();
-            System.out.println(((Integer) key+" "));
-            Map<String,String> map1 = (HashMap<String,String>)val;
-            Iterator iterator1 = map1.entrySet().iterator();
-            while (iterator1.hasNext()){
-                Map.Entry entry1 = (Map.Entry)iterator1.next();
-                Object object = entry1.getKey();
-                Object val2 = entry1.getValue();
-                System.out.println(object.toString()+"--->"+val2.toString());
+        for(int i = 0 ; i < 100 ; i++){
+            HashMap<String,String> data = map2.get(i);
+            Iterator iterator1 = data.entrySet().iterator();
+
+            System.out.println("TASKID------->" + i);
+            while(iterator1.hasNext()){
+                Map.Entry<String,String> entry = (Map.Entry<String, String>) iterator1.next();
+                System.out.print(entry.getKey() + " = "+entry.getValue());
             }
+            System.out.println("--------------------");
         }
     }
 
@@ -284,10 +328,35 @@ public class XTFunctionsListController extends AppCompatActivity implements Adap
         stringBuilder.append("将于"+hourOfDay+"点"+minute+"分开启摄像头并完成自动拍摄");
         map.put(XTakePicture.DESCRIPTION,stringBuilder.toString());
         stringBuilder = new StringBuilder();
-        stringBuilder.append(hourOfDay+"点"+minute+"分");
+        stringBuilder.append(hourOfDay+":"+minute);
         map.put(XTakePicture.TIME,stringBuilder.toString());
         stringBuilder = new StringBuilder();
         stringBuilder.append("on");
         map.put(XTakePicture.TASK_STATUS,stringBuilder.toString());
+    }
+    public void switchTheme(int id) {
+        switch (id) {
+            case 1:
+                setTheme(R.style.AppTheme);
+                return;
+            case 2:
+                setTheme(R.style.coolBlack);
+                return;
+            case 3:
+                setTheme(R.style.nightBlue);
+                return;
+            case 4:
+                setTheme(R.style.sakuraPink);
+                return;
+        }
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            intent.setClass(XTFunctionsListController.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

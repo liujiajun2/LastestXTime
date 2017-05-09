@@ -1,8 +1,12 @@
 package com.jmu.xtime.functionservers.XTSendGPS.Controller;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +22,7 @@ import com.jmu.xtime.functionservers.XTFunctionsGlobal.XTFunctionsGlobalData;
 import com.jmu.xtime.functionservers.XTFunctionsList.Controller.XTFunctionsListController;
 import com.jmu.xtime.functionservers.XTFunctionsList.Extension.XTFunctionsTools;
 import com.jmu.xtime.functionservers.XTSendSMS.Controller.XTSendSMSController;
+import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +41,14 @@ public class XTSendGPSController extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this,"请开启GPS并授权",Toast.LENGTH_LONG).show();
+            return ;
+        }
+
         super.onCreate(savedInstanceState);
+        TaskInfomationManager taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
+        switchTheme(taskInfomationManager.getTheme());
         setContentView(R.layout.xt_functions_send_gps_layout);
 
         receiveGPSPhoneEdit = (EditText) findViewById(R.id.receiveGPSPhoneEditText);
@@ -99,6 +111,26 @@ public class XTSendGPSController extends AppCompatActivity {
         extraString.put("tel",receiveGPSPhoneEdit.getText().toString());
         extraString.put("sendTimeInterval",sendGPSInterval.getText().toString());
         extraString.put("sendTimes",sendGPSCount.getText().toString());
-        XTFunctionsTools.showDialog(this,XTSendGPSController.this, "发送GPS","sendGPS",extraString);
+        XTFunctionsTools.showDialog(XTSendGPSController.this, "发送GPS","sendGPS",extraString);
+    }
+
+
+
+
+    public void switchTheme(int id){
+        switch (id){
+            case 1:
+                setTheme(R.style.AppTheme);
+                return;
+            case 2:
+                setTheme(R.style.coolBlack);
+                return;
+            case 3:
+                setTheme(R.style.nightBlue);
+                return;
+            case 4:
+                setTheme(R.style.sakuraPink);
+                return;
+        }
     }
 }

@@ -70,16 +70,16 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
                 if(camera!= null){
                     camera.takePicture(null,null,jpegCallback);
                     changeByTime(3000);
-                    System.out.println("sucess");
+    //                System.out.println("sucess");
                 }
             }
         });
-        System.out.println("OnCreate");
+ //       System.out.println("OnCreate");
         activity = this;
     }
 
     public void changeByTime(long time){
-        System.out.println("changeByTime");
+  //      System.out.println("changeByTime");
         final Timer timer = new Timer();
         final Handler handler = new Handler(){
             @Override
@@ -108,7 +108,7 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
 
     @Override
     public void surfaceChanged(SurfaceHolder arg0,int arg1,int arg2,int arg3){
-        System.out.println("surfaceChanged");
+  //      System.out.println("surfaceChanged");
         startCamera();
 
     }
@@ -116,24 +116,24 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
     public void surfaceCreated(SurfaceHolder arg0){
         initConnectToDB(this.getBaseContext());
         Intent intent = this.getIntent();
-        System.out.println("intent----->"+intent.toString());
+   //     System.out.println("intent----->"+intent.toString());
         if(intent.getStringExtra("taskId")!=null){
             id = Long.parseLong(intent.getStringExtra("taskId"));
-            System.out.println("id---->"+id);
+ //           System.out.println("id---->"+id);
         }else {
-            System.out.print("null");
+//            System.out.print("null");
         }
-        System.out.println("surfaceCreated");
+  //      System.out.println("surfaceCreated");
         prepareCamera();
     }
     @Override
     public  void surfaceDestroyed(SurfaceHolder arg0){
-        System.out.println("surfaceDestroyed");
+ //       System.out.println("surfaceDestroyed");
         stopCamera();
     }
 
     public void prepareCamera(){
-        System.out.println("prepareCamera");
+  //      System.out.println("prepareCamera");
         camera = android.hardware.Camera.open();
         try{
             camera.setPreviewDisplay(surfaceHolder);
@@ -144,7 +144,7 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
     }
 
     public void startCamera(){
-        System.out.println("startCamera");
+  //      System.out.println("startCamera");
         if(previewRunning){
             camera.stopPreview();
         }
@@ -161,7 +161,7 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
         }
     }
     public void stopCamera(){
-        System.out.println("stopCamera");
+//        System.out.println("stopCamera");
         if(camera!=null){
             camera.stopPreview();
             camera.release();
@@ -187,8 +187,9 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
             }catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.print("taskId---->"+id);
+  //          System.out.print("taskId---->"+id);
             taskInfomationManager.deleteTask(id);
+            taskInfomationManager.deleteTaskStatus(id);
             activity.finish();
             Intent intent = new Intent();
             intent.putExtra("message","图片保存在/sdcard/pictures目录下,图片名称为"+fileName+".jpg");
@@ -211,7 +212,7 @@ public class XTFunction_Take_Picture extends Activity implements SurfaceHolder.C
 
     @Override
     protected void onDestroy() {
-        System.out.println("onDestroy()");
+//        System.out.println("onDestroy()");
         super.onDestroy();
     }
 }

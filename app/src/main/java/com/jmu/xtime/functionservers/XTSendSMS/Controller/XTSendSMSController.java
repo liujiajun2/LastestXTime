@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.jmu.xtime.R;
 import com.jmu.xtime.functionservers.XTFunctionsList.Extension.XTFunctionsTools;
+import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,8 @@ public class XTSendSMSController extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TaskInfomationManager taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
+        switchTheme(taskInfomationManager.getTheme());
         setContentView(R.layout.xt_functions_send_message_layout);
 
         sendSMSButton = (Button)findViewById(R.id.xtSendSMSButton);
@@ -65,11 +68,30 @@ public class XTSendSMSController extends AppCompatActivity {
 
     }
 
+
+
+    public void switchTheme(int id) {
+        switch (id) {
+            case 1:
+                setTheme(R.style.AppTheme);
+                return;
+            case 2:
+                setTheme(R.style.coolBlack);
+                return;
+            case 3:
+                setTheme(R.style.nightBlue);
+                return;
+            case 4:
+                setTheme(R.style.sakuraPink);
+                return;
+        }
+
+    }
     private void sendSMS(String phoneNo, String message) {
         Map<String,String> extraString = new HashMap<String,String>();
         extraString.put("tel",targetPhoneNum.getText().toString());
         extraString.put("content",targetSMSContext.getText().toString());
-        XTFunctionsTools.showDialog(this,XTSendSMSController.this, "发送短信","sendSMS",extraString);
+        XTFunctionsTools.showDialog(XTSendSMSController.this, "发送短信","sendSMS",extraString);
 
     }
     private TextWatcher textChange = new TextWatcher() {
@@ -95,4 +117,8 @@ public class XTSendSMSController extends AppCompatActivity {
 
         }
     };
+
+
+
+
 }

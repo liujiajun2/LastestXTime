@@ -18,6 +18,7 @@ import com.jmu.xtime.R;
 import com.jmu.xtime.functionservers.XTFunctionsGlobal.XTFunctionsGlobalData;
 import com.jmu.xtime.functionservers.XTFunctionsList.Controller.XTFunctionsListController;
 import com.jmu.xtime.functionservers.XTFunctionsList.Extension.Receiver.XTFunctionsGetSMSBroadcastReceiver;
+import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
 
 /**
  * Created by 沈启金 on 2017/3/13.
@@ -37,6 +38,9 @@ public class XTFunctionsAnalyzeMessageController extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        TaskInfomationManager taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
+        switchTheme(taskInfomationManager.getTheme());
         setContentView(R.layout.xt_functions_analyze_message_layout);
 
         switchAnylazeMessage = (Switch) findViewById(R.id.switchAnalyzeMessage);
@@ -116,5 +120,24 @@ public class XTFunctionsAnalyzeMessageController extends AppCompatActivity {
         data.setAnalyzeMessageSparseArray(sparseArray);
 
         return true;
+    }
+
+
+
+    public void switchTheme(int id){
+        switch (id){
+            case 1:
+                setTheme(R.style.AppTheme);
+                return;
+            case 2:
+                setTheme(R.style.coolBlack);
+                return;
+            case 3:
+                setTheme(R.style.nightBlue);
+                return;
+            case 4:
+                setTheme(R.style.sakuraPink);
+                return;
+        }
     }
 }

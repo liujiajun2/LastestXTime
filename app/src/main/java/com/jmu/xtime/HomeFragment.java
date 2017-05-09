@@ -47,21 +47,19 @@ public class HomeFragment extends Fragment {
         showTask();
         return view;
     }
+
     private void showTask(){
         taskInfomationManager = new TaskInfomationManager(this.getActivity().getBaseContext());
         Map<Integer, HashMap<String, String>> map2 = taskInfomationManager.getTasks();
-        if(map2!=null) {
-            Iterator iterator = map2.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry entry = (Map.Entry) iterator.next();
-                Object key = entry.getKey();
-                Object val = entry.getValue();
-                Map<String, String> map1 = (HashMap<String, String>) val;
-                LinearLayout linearLayout = new LinearLayout(getActivity());
+        if(map2 == null) return;
+        for(int i  = 0 ; i <=taskInfomationManager.getMaxTaskId();i++){
+            if(map2.get(i) != null){
+                HashMap<String,String> map1 = map2.get(i);
+                if(map1 != null){
+                    LinearLayout linearLayout = new LinearLayout(getActivity());
                 linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-               // linearLayout.setGravity(Gravity.HORIZONTAL_GRAVITY_MASK)
+                // linearLayout.setGravity(Gravity.HORIZONTAL_GRAVITY_MASK)
                 linearLayout.setPadding(30,20,30,20);
-
 
                 //设置layout_weight 第三个参数是weight的值
                 LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1.0f);
@@ -85,12 +83,98 @@ public class HomeFragment extends Fragment {
                 LL.addView(linearLayout);
                 LL.addView(view);
 
+                }
             }
-        }else{
-
         }
+//        if(map2!=null) {
+//            Iterator iterator = map2.entrySet().iterator();
+//            while (iterator.hasNext()) {
+//                Map.Entry entry = (Map.Entry) iterator.next();
+//                Object key = entry.getKey();
+//                Object val = entry.getValue();
+//                Map<String, String> map1 = (HashMap<String, String>) val;
+//                LinearLayout linearLayout = new LinearLayout(getActivity());
+//                linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//                // linearLayout.setGravity(Gravity.HORIZONTAL_GRAVITY_MASK)
+//                linearLayout.setPadding(30,20,30,20);
+//
+//
+//                //设置layout_weight 第三个参数是weight的值
+//                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1.0f);
+//                TextView textView1 = new TextView(getActivity());
+//                textView1.setText(map1.get("title"));
+//                textView1.setTextSize(18);
+//                textView1.setLayoutParams(params1);
+//
+//                TextView textView2 = new TextView(getActivity());
+//                textView2.setText(map1.get("time"));
+//                textView2.setTextSize(18);
+//                textView2.setGravity(Gravity.RIGHT);
+//                textView2.setLayoutParams(params1);
+//
+//                linearLayout.addView(textView1);
+//                linearLayout.addView(textView2);
+//                View view = new View(getActivity());
+//                view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,1));
+//                view.setBackgroundColor(Color.rgb(77,77,77));
+//
+//                LL.addView(linearLayout);
+//                LL.addView(view);
+//
+//            }
+//        }else{
+//
+//        }
 
     }
+
+
+
+
+//    private void showTask(){
+//        taskInfomationManager = new TaskInfomationManager(this.getActivity().getBaseContext());
+//        Map<Integer, HashMap<String, String>> map2 = taskInfomationManager.getTasks();
+//        if(map2!=null) {
+//            Iterator iterator = map2.entrySet().iterator();
+//            while (iterator.hasNext()) {
+//                Map.Entry entry = (Map.Entry) iterator.next();
+//                Object key = entry.getKey();
+//                Object val = entry.getValue();
+//                Map<String, String> map1 = (HashMap<String, String>) val;
+//                LinearLayout linearLayout = new LinearLayout(getActivity());
+//                linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//               // linearLayout.setGravity(Gravity.HORIZONTAL_GRAVITY_MASK)
+//                linearLayout.setPadding(30,20,30,20);
+//
+//
+//                //设置layout_weight 第三个参数是weight的值
+//                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1.0f);
+//                TextView textView1 = new TextView(getActivity());
+//                textView1.setText(map1.get("title"));
+//                textView1.setTextSize(18);
+//                textView1.setLayoutParams(params1);
+//
+//                TextView textView2 = new TextView(getActivity());
+//                textView2.setText(map1.get("time"));
+//                textView2.setTextSize(18);
+//                textView2.setGravity(Gravity.RIGHT);
+//                textView2.setLayoutParams(params1);
+//
+//                linearLayout.addView(textView1);
+//                linearLayout.addView(textView2);
+//                View view = new View(getActivity());
+//                view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,1));
+//                view.setBackgroundColor(Color.rgb(77,77,77));
+//
+//                LL.addView(linearLayout);
+//                LL.addView(view);
+//
+//            }
+//        }else{
+//
+//        }
+//
+//    }
 
 
 }

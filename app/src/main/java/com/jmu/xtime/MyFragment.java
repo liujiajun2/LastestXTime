@@ -56,7 +56,9 @@ public class MyFragment extends Fragment {
                 startActivity(intent);
             }
             if(position == 1){
-
+                Intent intent = new Intent();
+                intent.setClass(getActivity(),SettingActivity.class);
+                startActivity(intent);
             }
         }
     };

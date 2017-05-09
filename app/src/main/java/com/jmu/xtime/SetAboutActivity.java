@@ -1,6 +1,7 @@
 package com.jmu.xtime;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ public class SetAboutActivity extends AppCompatActivity {
     private int themeId;
     private TextView back;
     private Activity activity;
+    private TextView setting_about_tickling;
+    private TextView setting_about_function;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,27 @@ public class SetAboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 activity.finish();
+            }
+        });
+
+        setting_about_tickling = (TextView)findViewById(R.id.setting_about_tickling);
+        setting_about_tickling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(SetAboutActivity.this,SetAboutTickingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        setting_about_function = (TextView)findViewById(R.id.setting_about_function);
+        setting_about_function.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(SetAboutActivity.this,SetAboutFunctionActivity.class);
+                startActivity(intent);
             }
         });
     }
