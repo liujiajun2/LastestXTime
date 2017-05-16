@@ -103,7 +103,8 @@ public class XTSendSMSController extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if(message.getText().toString().length()>0){
-                sendSMSButton.setBackgroundColor(getResources().getColor(R.color.text_blue));
+              //  sendSMSButton.setBackgroundColor(getResources().getColor(R.color.text_blue));
+                sendSMSButton.setBackgroundResource(R.drawable.shape_blue);
             }else{
                 sendSMSButton.setBackgroundColor(getResources().getColor(R.color.xian_gray));
             }

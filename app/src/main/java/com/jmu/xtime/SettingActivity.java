@@ -4,28 +4,34 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jmu.xtime.update.TaskManager.TaskInfomationManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class SettingActivity extends AppCompatActivity {
 
-    private TextView text_setting_color;
-    private TextView text_setting_clear;
-    private TextView text_setting_about;
+    private RelativeLayout change_theme;
+    private RelativeLayout clear_all_task;
+    private RelativeLayout about_and_help;
     private Button set_btn;
     private TaskInfomationManager taskInfomationManager;
     private Activity activity;
     private TextView back;
     private String message = "退出登陆成功";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,9 @@ public class SettingActivity extends AppCompatActivity {
         taskInfomationManager = new TaskInfomationManager(this.getBaseContext());
         switchTheme(taskInfomationManager.getTheme());
         setContentView(R.layout.set);
-        text_setting_color = (TextView)findViewById(R.id.text_setting_color);
-        text_setting_color.setOnClickListener(new View.OnClickListener() {
+
+        change_theme = (RelativeLayout)findViewById(R.id.change_theme);
+        change_theme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -45,8 +52,8 @@ public class SettingActivity extends AppCompatActivity {
 
             }
         });
-        text_setting_clear = (TextView)findViewById(R.id.text_setting_clear);
-        text_setting_clear.setOnClickListener(new View.OnClickListener() {
+        clear_all_task = (RelativeLayout) findViewById(R.id.clear_all_task);
+        clear_all_task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean flag = true;
@@ -72,8 +79,8 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        text_setting_about = (TextView)findViewById(R.id.text_setting_about);
-        text_setting_about.setOnClickListener(new View.OnClickListener() {
+        about_and_help = (RelativeLayout) findViewById(R.id.about_and_help);
+        about_and_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     Intent intent = new Intent();
@@ -87,8 +94,8 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(SettingActivity.this,message, Toast.LENGTH_LONG).show();
-            }
-        });
+    }
+});
         System.out.println("onCreate");
 
         back = (TextView)findViewById(R.id.back);
@@ -128,11 +135,14 @@ public class SettingActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-//    @Override
-//    protected void onRestart() {
-//        switchTheme(taskInfomationManager.getTheme());
-//        setContentView(R.layout.set);
-//        System.out.println("onRestart");
-//        super.onRestart();
-//    }
+
+    public List<MyselfMessageInfo> getMyDatalist(){
+        List<MyselfMessageInfo> listItem = new ArrayList<MyselfMessageInfo>();
+        MyselfMessageInfo data1 = new MyselfMessageInfo("登录",this.getResources().getDrawable(R.drawable.login));
+        MyselfMessageInfo data2 = new MyselfMessageInfo("设置",this.getResources().getDrawable(R.drawable.setting));
+        listItem.add(data1);
+        listItem.add(data2);
+        return listItem;
+    }
+
 }

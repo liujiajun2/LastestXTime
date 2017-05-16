@@ -12,6 +12,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
+        <item name="mennu_pictrue">@mipmap/introduce</item>
     </style>
     <style name="coolBlack" >
         <item name="textColor">#ffcc00</item>
@@ -21,6 +22,7 @@
         <item name="my_home">@mipmap/nav_home_on_black</item>
         <item name="first_page_pictrue">@mipmap/nav_task_on_black</item>
         <item name="tasks_pictrue">@mipmap/nav_myself_on_black</item>
+        <item name="mennu_pictrue">@mipmap/menu_black</item>
     </style>
     <style name="nightBlue" >
         <item name="textColor">#0066cc</item>
@@ -30,6 +32,7 @@
         <item name="my_home">@mipmap/nav_home_off_blue</item>
         <item name="first_page_pictrue">@mipmap/nav_task_off_blue</item>
         <item name="tasks_pictrue">@mipmap/nav_myself_off_blue</item>
+        <item name="mennu_pictrue">@mipmap/menu_blue</item>
     </style>
     <style name="sakuraPink" >
         <item name="textColor">#ff3366</item>
@@ -39,6 +42,7 @@
         <item name="my_home">@mipmap/nav_home_on_pink</item>
         <item name="first_page_pictrue">@mipmap/nav_task_on_pink</item>
         <item name="tasks_pictrue">@mipmap/nav_myself_on_pink</item>
+        <item name="mennu_pictrue">@mipmap/menupink</item>
     </style>
 
 </resources>

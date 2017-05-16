@@ -5,7 +5,8 @@
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:padding="10dp">
         <include layout="@layout/back_sendmessage"></include>
         <TextView
             android:layout_width="fill_parent"
@@ -34,7 +35,7 @@
             android:id="@+id/xtSendSMSButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+           android:textColor="#ffffff"
             android:text="发送"
             android:textSize="18sp" />
     </LinearLayout>

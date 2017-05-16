@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -51,7 +53,26 @@ public class HomeFragment extends Fragment {
     private void showTask(){
         taskInfomationManager = new TaskInfomationManager(this.getActivity().getBaseContext());
         Map<Integer, HashMap<String, String>> map2 = taskInfomationManager.getTasks();
-        if(map2 == null) return;
+        System.out.print(map2.toString());
+        if(map2.size() == 0){
+            Log.i("kkkkk","任务为空啊啊啊啊啊啊");
+            LinearLayout linearLayout = new LinearLayout(getActivity());
+            LinearLayout.LayoutParams params = new  LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            params.gravity = Gravity.CENTER;
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setImageResource(R.drawable.no_content);
+            imageView.setLayoutParams(params);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent  = new Intent();
+                    intent.setClass(getActivity(), XTFunctionsListController.class);
+                    startActivity(intent);
+                }
+            });
+            linearLayout.addView(imageView);
+            LL.addView(linearLayout);
+        }
         for(int i  = 0 ; i <=taskInfomationManager.getMaxTaskId();i++){
             if(map2.get(i) != null){
                 HashMap<String,String> map1 = map2.get(i);

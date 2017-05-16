@@ -7,4 +7,5 @@
     <attr name="first_page_pictrue" format="reference"></attr>
     <attr name="tasks_pictrue" format="reference"></attr>
     <attr name="my_home" format="reference"></attr>
+    <attr name="mennu_pictrue" format="reference"></attr>
 </resources>

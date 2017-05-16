@@ -138,7 +138,7 @@
         android:layout_height="wrap_content"
         android:textSize="18dp"
         android:text="删除"
-        android:background="#842346"
+        android:background="@drawable/shape_delete"
         android:textColor="#fff"
         android:layout_margin="10dp"
         android:id="@+id/task_detail_delete"/>

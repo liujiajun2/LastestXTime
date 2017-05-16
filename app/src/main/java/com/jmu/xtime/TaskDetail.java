@@ -100,6 +100,8 @@ public class TaskDetail extends Activity {
 
         }else if(hashMap.get("title").equals("发送GPS")){
 
+            TextView tel = (TextView)this.findViewById(R.id.task_detail_tel);
+            tel.setText(hashMap.get("tel"));
             TextView interval = (TextView)this.findViewById(R.id.task_detail_inteval);
             interval.setText(hashMap.get("sendTimeInterval"));
             TextView number = (TextView)this.findViewById(R.id.task_detail_number);

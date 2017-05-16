@@ -12,12 +12,14 @@
         android:background="@color/transparent"
         android:id="@+id/fragment_container"
         >
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="700dp"
             android:background="@color/content_bg"
             android:id="@+id/xtFunctionsListView"
-            android:layout_weight="0.83" />
+            android:layout_weight="0.83"
+            android:dividerHeight="1dp" />
     </FrameLayout>
 
 

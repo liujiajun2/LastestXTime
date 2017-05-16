@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/header_bg">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -19,5 +25,50 @@
     <!--引入底部 开始-->
     <include layout="@layout/nav"></include>
     <!--引入底部  结束-->
-
 </RelativeLayout>
+
+    <!--<ListView android:id="@+id/left_drawer"-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:choiceMode="singleChoice"-->
+        <!--android:divider="@android:color/transparent"-->
+        <!--android:dividerHeight="0dp"-->
+      <!--android:background="#ffffff"-->
+       <!--/>-->
+    <include
+        android:id="@+id/right_sliding"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        layout="@layout/navigation_layout"
+        android:layout_gravity="start"
+        />
+</android.support.v4.widget.DrawerLayout>
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<include layout="@layout/header"></include>-->
+    <!--&lt;!&ndash;显示内容   开始&ndash;&gt;-->
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/title"-->
+        <!--android:layout_above="@+id/nav"-->
+        <!--android:background="@color/transparent"-->
+        <!--android:id="@+id/fragment_container"-->
+        <!--&gt;-->
+    <!--</FrameLayout>-->
+    <!--&lt;!&ndash;显示内容   结束&ndash;&gt;-->
+
+    <!--&lt;!&ndash;引入底部 开始&ndash;&gt;-->
+    <!--<include layout="@layout/nav"></include>-->
+    <!--&lt;!&ndash;引入底部  结束&ndash;&gt;-->
+
+<!--</RelativeLayout>-->

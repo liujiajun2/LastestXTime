@@ -41,7 +41,7 @@
         android:id="@+id/login_btnLogin"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@mipmap/button_bg"
+        android:background="@drawable/shape_blue"
         android:text="登陆"
         android:layout_gravity="center"
         android:textColor="#FFFFFF"
